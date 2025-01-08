@@ -53,3 +53,10 @@ setSubmitButton('calculate-ponderal-weight-loss', () => {
     showElement('ponderal-weight-loss-result', errorCode < 0);
 });
 /* -------------------------------------------------------------------------- */
+setTimeout(() => {
+    // Adicionar script https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML na página
+    const script = document.createElement('script');
+    script.src =
+        'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    document.head.appendChild(script);
+}, 3000);
