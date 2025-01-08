@@ -1,0 +1,47 @@
+@layer settings, tools, base, layout, module, theme, state, utilities;
+@import url('css/settings.css') layer(settings);
+@import url('css/tools.css') layer(tools);
+@import url('css/normalize.css') layer(base);
+@import url('css/base.css') layer(base);
+@import url('css/layout.css') layer(layout);
+/* CSS modules = Module + Theme + State */
+@import url('css/card.css');
+@import url('css/header.css');
+@import url('css/footer.css');
+@import url('css/botao.css');
+
+@layer utilities {
+
+    /** Typography */
+    .u-text-center {
+        text-align: center;
+    }
+
+    .u-text-right {
+        text-align: right;
+    }
+
+    .u-text-left {
+        text-align: left;
+    }
+
+    .u-font-bold {
+        font-weight: bold;
+    }
+
+    .u-font-italic {
+        font-style: italic;
+    }
+
+    .u-text-uppercase {
+        text-transform: uppercase;
+    }
+
+    .u-text-lowercase {
+        text-transform: lowercase;
+    }
+
+    .u-text-capitalize {
+        text-transform: capitalize;
+    }
+}

@@ -1,0 +1,48 @@
+@layer module {
+    .navbar {
+        padding: 1em;
+    }
+
+    .navbar-ctnr {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+    }
+
+    .navbar__label {
+        margin-right: 0.5em;
+    }
+
+    .navbar__label-text {
+        font-weight: var(--font-weight-bold);
+        font-family: var(--font-size-p);
+    }
+
+    .navbar__select {
+        padding: 0.4em;
+        min-width: 180px;
+    }
+
+    .navbar__select-text {
+        font-family: var(--font-size-p);
+    }
+}
+
+@layer theme {
+    .t-navbar {
+        background-color: var(--t-primary-color);
+        color: var(--t-on-primary);
+        box-shadow: 0 3px 5px var(--t-shadow);
+    }
+
+    .t-navbar__select {
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
+        background-color: var(--t-primary-container);
+        color: var(--t-on-primary-container);
+        box-shadow: 0 1px 2px var(--t-shadow)
+    }
+}

@@ -1,0 +1,79 @@
+header,
+footer {
+    background-color: #ffa500;
+    text-align: center;
+    min-width: 500px;
+}
+
+footer {
+    margin-top: 44px;
+}
+
+.logo {
+    width: 115px;
+    height: 21.1px;
+    padding: 20px;
+    object-fit: contain;
+}
+
+main {
+    margin-top: 40px;
+    display: grid;
+    grid-template: repeat(3, 450px) / 250px 250px;
+    gap: 20px;
+    justify-items: center;
+    justify-content: center;
+    align-items: stretch;
+    align-content: center;
+    grid-auto-rows: 450px;
+    grid-auto-columns: 250px;
+    grid-auto-flow: dense;
+}
+
+.recipe {
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.5);
+    width: 200px;
+}
+
+.recipe h2 {
+    color: #ffa500;
+    font-family: Poppins, sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    padding: 10px 0 10px 10px;
+}
+
+.recipe img {
+    width: 100%;
+    height: auto;
+}
+
+img.time {
+    width: 20px;
+    height: auto;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.mins {
+    display: inline-block;
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    text-align: left;
+    color: #4a4a4a;
+    position: relative;
+    bottom: 5px;
+}
+
+.description {
+    font-family: Work Sans;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.29;
+    letter-spacing: 0.1px;
+    columns: #4a4a4a;
+    padding: 10px 0px 10px 10px;
+    border-top: 1px solid #4a4a4a;
+}

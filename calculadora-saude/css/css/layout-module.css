@@ -1,0 +1,9 @@
+@layer theme {
+    .t-page {
+        background-color: var(--t-surface-color);
+    }
+
+    .page-cnt {
+        line-height: 1.5;
+    }
+}

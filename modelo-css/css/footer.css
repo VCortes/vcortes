@@ -1,0 +1,21 @@
+@layer module {
+
+    /* Conteúdo do Footer */
+    .footer__texto {
+        font-size: 14px;
+        margin: 0;
+        text-align: center;
+    }
+}
+
+@layer state {}
+
+@layer theme {
+    .t-footer {
+        background-color: var(--t-surface-color);
+    }
+
+    .t-footer__texto {
+        color: var(--t-on-surface-color);
+    }
+}

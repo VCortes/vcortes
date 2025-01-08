@@ -1,0 +1,51 @@
+body {
+    font-family: Helvetica, sans-serif;
+    margin: 8px;
+}
+
+p {
+    margin: 20px 0;
+}
+
+header {
+    background-image: url(pattern.jpg);
+    margin: 60px 0;
+    padding: 20px;
+}
+
+header h1 {
+    font-size: 100px;
+    font-weight: bold;
+    color: khaki;
+    text-align: center;
+}
+
+.product h2 {
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+    margin: 25px 0;
+}
+
+.green {
+    background-color: mediumspringgreen;
+}
+
+.red {
+    background-color: lightcoral;
+}
+
+.blue {
+    background-color: skyblue;
+}
+
+.product h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.price {
+    color: blue;
+    font-weight: bold;
+}

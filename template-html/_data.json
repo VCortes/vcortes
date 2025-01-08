@@ -1,0 +1,12 @@
+{
+    "endpoint": "https://labsapp.grupoa.education",
+    "names": [
+        {
+            "buttonName": "Ensaio de torção",
+            "folderName": "laboratorio",
+            "laboratoryId": "103",
+            "androidAvailable": true,
+            "iosAvailable": false
+        }
+    ]
+}

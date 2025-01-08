@@ -1,0 +1,72 @@
+/* 
+ * Contains variables for fonts, colors, breakpoints, spacings, z-indexes (dropdown, modal, tooltip), transitions, etc.
+ * No CSS rules should be written here.
+ */
+:root {
+    /* -------------------------------------------------------------------------- */
+    /* Cores */
+    --t-primary-color: #3A608F;
+    --t-on-primary: #FFFFFF;
+    --t-secondary-container: #FFDBCB;
+    --t-on-secondary-container: #341100;
+    --t-surface-color: #F5FBF6;
+    --t-on-surface-color: #171D1A;
+    --t-on-surface-variant: #4B4739;
+    --t-surface-container: #E9EFEB;
+    --t-surface-container-low: #EFF5F0;
+    --t-surface-container-lowest: #FFFFFF;
+    --t-outline: #7C7767;
+    --t-outline-variant: #CDC6B4;
+    --t-shadow: rgba(0, 0, 0, 0.1);
+    /* -------------------------------------------------------------------------- */
+    /* Tipografia */
+    --font-family: 'Roboto', sans-serif;
+    /* Tamanhos de fonte geral */
+    --root-font-size: 16px;
+    /* Tamanhos de fonte seção */
+    --font-size-xx-small: 0.625rem;
+    --font-size-x-small: 0.75rem;
+    --font-size-medium: 1rem;
+    --font-size-large: 1.25rem;
+    --font-size-x-large: 1.5rem;
+    /* Tamanhos de fonte de cabeçalhos e parágrafos (unidade: em) */
+    --font-size-h1: 2em;
+    --font-size-h2: 1.5em;
+    --font-size-h3: 1.17em;
+    --font-size-h4: 1em;
+    --font-size-h5: 0.83em;
+    --font-size-h6: 0.67em;
+    --font-size-p: 1em;
+    --font-size-button: 0.875em;
+    /* Pesos de fonte */
+    --font-weight-light: 300;
+    --font-weight-regular: 400;
+    --font-weight-bold: 700;
+    /* -------------------------------------------------------------------------- */
+    /* Breakpoints */
+    /* Mobile-first: Define estilos para mobile e incrementa para telas maiores */
+    /* Tablets pequenos */
+    --breakpoint-sm: 576px;
+    /*  Tablets e desktops pequenos */
+    --breakpoint-md: 768px;
+    /*  Desktops médios */
+    --breakpoint-lg: 992px;
+    /*  Desktops grandes */
+    --breakpoint-xl: 1200px;
+    /* -------------------------------------------------------------------------- */
+    /* z-index */
+    --z-index-dropdown: 1000;
+    --z-index-modal: 1050;
+    --z-index-tooltip: 1070;
+    /* -------------------------------------------------------------------------- */
+    /* Borders */
+    --border-radius: 15px;
+    /* -------------------------------------------------------------------------- */
+    /* Shadows */
+    --shadow: 0 4px 6px var(--t-shadow);
+    /* -------------------------------------------------------------------------- */
+    /* Transitions */
+    --transiotion-fast: 0.3s;
+    --transiotion-medium: 0.5s;
+    --transiotion-slow: 0.8s;
+}

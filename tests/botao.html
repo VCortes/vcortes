@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Vazia</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        #fixed-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #3b3a3b;
+            border: none;
+            border-radius: 50%;
+            cursor: grab;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            overflow: hidden;
+            -webkit-user-select: none;
+            user-select: none;
+            transition: width 0.55s cubic-bezier(0.645, 0.045, 0.355, 1),
+                border-radius 0.55s cubic-bezier(0.645, 0.045, 0.355, 1),
+                transform 0.55s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        #fixed-button:active {
+            cursor: grabbing;
+        }
+
+        #fixed-button:hover {
+            width: 200px;
+            border-radius: 999rem;
+        }
+
+        #fixed-button:hover .extra-icon {
+            opacity: 1;
+        }
+
+        #fixed-button:hover .hover-text {
+            opacity: 1;
+        }
+
+        .ionicon-container {
+            position: absolute;
+            left: 15px;
+            /* Posiciona o ícone 15px à direita da borda esquerda */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+        }
+
+        .ionicon {
+            width: 30px;
+            height: 30px;
+            stroke: #ffffff;
+        }
+
+        .extra-icon {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            width: 20px;
+            height: 20px;
+            stroke: #ffffff;
+            opacity: 0;
+            transition: opacity 0.55s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        .hover-text {
+            position: absolute;
+            left: 60px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-family: 'Open Sans Hebrew', Arial, Helvetica, sans-serif;
+            font-size: 15px;
+            line-height: 1.2em;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.55s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        /* Estilos para expansão à esquerda */
+        #fixed-button.expand-left {
+            transform-origin: right center;
+        }
+
+        #fixed-button.expand-left:hover {
+            width: 200px;
+            transform: translateX(-140px);
+            /* Usando transform em vez de margin-left */
+        }
+
+        #fixed-button.expand-left .ionicon-container {
+            left: auto;
+            right: 15px;
+            /* Posiciona o ícone 15px à esquerda da borda direita */
+        }
+
+        #fixed-button.expand-left .extra-icon {
+            left: 15px;
+            right: auto;
+        }
+
+        #fixed-button.dragging {
+            transition: none !important;
+            transform: none !important;
+        }
+
+        #fixed-button.expand-left .hover-text {
+            left: auto;
+            right: 60px;
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="fixed-button" title="Ação do botão">
+        <div class="ionicon-container">
+            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+                <path
+                    d="M416 221.25V416a48 48 0 01-48 48H144a48 48 0 01-48-48V96a48 48 0 0148-48h98.75a32 32 0 0122.62 9.37l141.26 141.26a32 32 0 019.37 22.62z"
+                    fill="none" stroke="white" stroke-linejoin="round" stroke-width="50" />
+                <path d="M256 56v120a32 32 0 0032 32h120" fill="none" stroke="white" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="50" />
+            </svg>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" class="extra-icon" viewBox="0 0 512 512">
+            <path fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"
+                d="M176 112l80-80 80 80M256 32v448M176 400l80 80 80-80M400 176l80 80-80 80M112 176l-80 80 80 80M32 256h448" />
+        </svg>
+        <span class="hover-text">Ver roteiro do <br> experimento</span>
+    </button>
+    <script>
+        const button = document.getElementById('fixed-button');
+        let isDragging = false;
+        let initialX, initialY;
+        let offsetX = 0, offsetY = 0;
+        function showScript() {
+            console.log('mostrar!');
+        }
+        function doDrag(e) {
+            if (isDragging) {
+                e.preventDefault();
+                let clientX, clientY;
+                if (e.type === 'mousemove') {
+                    clientX = e.clientX;
+                    clientY = e.clientY;
+                } else {
+                    clientX = e.touches[0].clientX;
+                    clientY = e.touches[0].clientY;
+                }
+                const dx = clientX - initialX;
+                const dy = clientY - initialY;
+                button.style.left = `${offsetX + dx}px`;
+                button.style.top = `${offsetY + dy}px`;
+            }
+        }
+        function startDrag(e) {
+            isDragging = true;
+            e.preventDefault();
+            button.classList.add('dragging');
+            const rect = button.getBoundingClientRect();
+            offsetX = rect.left;
+            offsetY = rect.top;
+            if (e.type === 'mousedown') {
+                initialX = e.clientX;
+                initialY = e.clientY;
+            } else {
+                initialX = e.touches[0].clientX;
+                initialY = e.touches[0].clientY;
+            }
+            button.style.left = rect.left + 'px';
+            button.style.top = rect.top + 'px';
+            button.style.bottom = 'auto';
+            button.style.right = 'auto';
+        }
+        function endDrag() {
+            isDragging = false;
+            // Remove a classe 'dragging'
+            button.classList.remove('dragging');
+            updateExpansionDirection();
+        }
+        function updateExpansionDirection() {
+            const rect = button.getBoundingClientRect();
+            const windowWidth = window.innerWidth;
+            const threshold = 200; // Ajuste conforme necessário
+            if (windowWidth - rect.right < threshold) {
+                // Próximo à borda direita
+                button.classList.add('expand-left');
+            } else {
+                button.classList.remove('expand-left');
+            }
+        }
+        button.addEventListener('click', showScript);
+        button.addEventListener('mousedown', startDrag);
+        button.addEventListener('touchstart', startDrag);
+        document.addEventListener('mousemove', doDrag);
+        document.addEventListener('touchmove', doDrag);
+        document.addEventListener('mouseup', endDrag);
+        document.addEventListener('touchend', endDrag);
+        // Evita a seleção de texto durante o arraste
+        document.addEventListener('selectstart', function (e) {
+            if (isDragging) {
+                e.preventDefault();
+            }
+        });
+        // Atualiza a direção de expansão ao redimensionar a janela
+        window.addEventListener('resize', updateExpansionDirection);
+    </script>
+</body>
+
+</html>

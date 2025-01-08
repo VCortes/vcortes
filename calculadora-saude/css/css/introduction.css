@@ -1,0 +1,19 @@
+@layer module {
+    .introduction {
+        margin-bottom: 2em;
+    }
+
+    .introduction-cnt {
+        text-align: center;
+    }
+
+    .introduction__title {
+        margin-bottom: 0.5em;
+    }
+}
+
+@layer theme {
+    .t-introduction__title {
+        color: var(--t-primary-color);
+    }
+}

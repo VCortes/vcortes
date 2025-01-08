@@ -1,0 +1,13 @@
+@layer module {
+    .info-toggle {
+        padding: .75em;
+    }
+}
+
+@layer theme {
+    .t-info-toggle {
+        background-color: var(--t-tertiary-container);
+        color: var(--t-on-tertiary-container);
+        border-radius: 4px;
+    }
+}

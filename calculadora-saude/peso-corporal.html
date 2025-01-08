@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Peso Corporal</title>
+    <!-- Fonte Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Conversor Markdown -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js">
+    </script>
+</head>
+
+<body id="l-page" class="t-page">
+    <div class="page-cnt">
+        <!-- Cabeçalho/Navegação -->
+        <nav>
+            <section class="navbar t-navbar">
+                <div class="navbar-ctnr">
+                    <label for="calculator-select" class="navbar__label">
+                        <span class="navbar__label-text">
+                            Escolha a calculadora:
+                        </span></label>
+                    <select name="calculator-select" class="navbar__select t-navbar__select"
+                        onchange="window.location.href=this.value">
+                        <option value="peso-corporal.html" selected>
+                            <span class="navbar__select-text">Peso Corporal</span>
+                        </option>
+                        <option value="antropometria.html">
+                            <span class="navbar__select-text">Antropometria</span>
+                        </option>
+                        <option value="necessidades-nutricionais.html">
+                            <span class="navbar__select-text">Necessidades Nutricionais</span>
+                        </option>
+                        <option value="tipografia.html">
+                            <span class="navbar__select-text">Tipografia</span>
+                        </option>
+                    </select>
+                </div>
+            </section>
+        </nav>
+        <!-- Seção principal -->
+        <main id="l-main">
+            <!-- Título principal -->
+            <section class="introduction">
+                <div class="introduction-cnt">
+                    <h1 class="introduction__title t-introduction__title">
+                        Calculadora de Peso Corporal
+                    </h1>
+                    <p class="u-text-justify">
+                        Cálculo de peso corporal, que considera fatores como sexo, idade, altura, amputações e retenção
+                        de líquidos. Realiza cálculos de <b>peso ideal, peso ideal ajustado (meta viável entre o peso
+                            atual e o ideal), perda de peso ponderal e estimativa de peso</b> com base em
+                        características como sexo, idade e etnia, auxiliando na definição de metas realistas e
+                        personalizadas.
+                    </p>
+                </div>
+            </section>
+            <section>
+                <!-- *Card de cálculo de estimativa de peso -->
+                <article class="card t-card">
+                    <h2 class="card__title t-card__title">Estimativa de Peso</h2>
+                    <details class="info-toggle t-info-toggle">
+                        <summary>Fundamentação teórica</summary>
+                        <p id="peso-corporal-estimativa" class="u-text-justify" data-markdown="true"></p>
+                    </details>
+                    <form action="" class="card__form">
+                        <!-- Campo de Altura do Joelho -->
+                        <label for="knee-height" class="t-card__label">
+                            <span class="card__label-cnt">Altura do joelho (cm):</span>
+                        </label>
+                        <input type="number" step="0.01" id="knee-height" min="0" name="knee-height"
+                            class="card__input card__input-cnt t-card__input" required>
+                        <!-- Campo de Circunferência do Braço -->
+                        <label for="arm-circumference" class="t-card__label">
+                            <span class="card__label-cnt">Circunferência do braço (cm):</span>
+                        </label>
+                        <input type="number" step="0.01" id="arm-circumference" min="0" name="arm-circumference"
+                            class="card__input card__input-cnt t-card__input" required>
+                        <!-- Seletor Etnia -->
+                        <label for="ethnicity" class="t-card__label">
+                            <span class="card__label-cnt">Etnia:</span>
+                        </label>
+                        <select name="ethnicity" id="ethnicity" class="card__select card__select-cnt t-card__select">
+                            <option value="negra">Negra</option>
+                            <option value="branca">Branca</option>
+                        </select>
+                        <!-- Seletor Sexo -->
+                        <label for="gender" class="t-card__label">
+                            <span class="card__label-cnt">Gênero:</span>
+                        </label>
+                        <select name="gender" id="gender" class="card__select card__select-cnt t-card__select">
+                            <option value="masculino">Masculino</option>
+                            <option value="feminino">Feminino</option>
+                        </select>
+                        <!-- Seletor Idade -->
+                        <label for="age" class="t-card__label">
+                            <span class="card__label-cnt">Idade (anos):</span>
+                        </label>
+                        <input type="number" id="age" name="age" class="card__input  min card__input-cnt t-card__input" min="19" max="80"
+                            required>
+                        <!-- Botão de cálculo -->
+                        <button type="submit" id="calculate-estimated-weight" class="button t-button" title="Calcular">
+                            <span class="button-cnt">Estimar peso</span>
+                        </button>
+                        <!-- Componente de Resultado -->
+                        <div class="card__result t-card__result is-hidden" id="estimated-weight-result">
+                            <h3 class="result__title t-result__title">Resultado</h3>
+                            <p>A estimativa de peso é:</p>
+                            <p class="result__value t-result__value">
+                                <span id="estimated-weight" class="result__value-txt">0</span>
+                            </p>
+                        </div>
+                    </form>
+                </article>
+                <!-- *Card de cálculo de peso ideal -->
+                <article class="card t-card">
+                    <h2 class="card__title t-card__title">Peso Ideal</h2>
+                    <details class="info-toggle t-info-toggle">
+                        <summary>Fundamentação teórica</summary>
+                        <p id="peso-corporal-peso-ideal" class="u-text-justify" data-markdown="true"></p>
+                    </details>
+                    <form action="" class="card__form">
+                        <!-- Campo de Peso Atual -->
+                        <label for="current-weight" class="t-card__label">
+                            <span class="card__label-cnt">Peso atual (kg):</span>
+                        </label>
+                        <input type="number" step="0.01" min="0" id="current-weight" name="current-weight"
+                            class="card__input card__input-cnt t-card__input" required>
+                        <!-- Campo de Altura -->
+                        <label for="height" class="t-card__label">
+                            <span class="card__label-cnt">Altura (m):</span>
+                        </label>
+                        <input type="number" step="0.01" min="0" id="height" name="height"
+                            class="card__input card__input-cnt t-card__input" required>
+                        <!-- Seletor Sexo -->
+                        <label for="gender" class="t-card__label">
+                            <span class="card__label-cnt">Gênero:</span>
+                        </label>
+                        <select name="gender" id="gender-2" class="card__select card__select-cnt t-card__select">
+                            <option value="masculino">Masculino</option>
+                            <option value="feminino">Feminino</option>
+                        </select>
+                        <!-- Seletor Idade -->
+                        <label for="age" class="t-card__label">
+                            <span class="card__label-cnt">Idade (anos):</span>
+                        </label>
+                        <input type="number" id="age-2" step="1" min="0" name="age" class="card__input card__input-cnt t-card__input"
+                            required>
+                        <!-- Seletor Amputações -->
+                        <label for="amputations" class="t-card__label">
+                            <span class="card__label-cnt">Amputações:</span>
+                        </label>
+                        <div class="card__checkboxes" id="amputations">
+                            <input type="checkbox" id="mao-esquerda" name="amputations" value="0.7">
+                            <label for="mao-esquerda" class="card__checkbox">
+                                <span class="card__checkbox-cnt">Mão esquerda (0,7%)</span>
+                            </label><br>
+                            <input type="checkbox" id="mao-direita" name="amputations" value="0.7">
+                            <label for="mao-direita" class="card__checkbox">
+                                <span class="card__checkbox-cnt">Mão direita (0,7%)</span>
+                            </label><br>
+                            <input type="checkbox" id="antebraco-e-mao-esquerdos" name="amputations" value="1.6">
+                            <label for="antebraco-e-mao-esquerdos" class="card__checkbox">
+                                <span class="card__checkbox-cnt">Antebraço esquerdo (1,6%)</span>
+                            </label><br>
+                            <input type="checkbox" id="antebraco-e-mao-direitos" name="amputations" value="1.6">
+                            <label for="antebraco-e-mao-direitos" class="card__checkbox">
+                                <span class="card__checkbox-cnt">Antebraço direito (1,6%)</span>
+                            </label><br>
+                            <input type="checkbox" id="braco-e-antebraco-esquerdos" name="amputations" value="2.7">
+                            <label for="braco-e-antebraco-esquerdos" class="card__checkbox">
+                                <span class="card__checkbox-cnt">Parte superior do braço esquerdo (2,7%)</span>
+                            </label><br>
+                            <input type="checkbox" id="braco-e-antebraco-direitos" name="amputations" value="2.7">
+                            <label for="braco-e-antebraco-direitos" class="card__checkbox">
+                                <span class="card__checkbox-cnt">Parte superior do braço direito (2,7%)</span>
+                            </label><br>
+                            <input type="checkbox" id="pe-esquerdo" name="amputations" value="1.5">
+                            <label for="pe-esquerdo" class="card__checkbox">
+                                <span class="card__checkbox-cnt">Pé esquerdo (1,5%)</span>
+                            </label><br>
+                            <input type="checkbox" id="pe-direito" name="amputations" value="1.5">
+                            <label for="pe-direito" class="card__checkbox">
+                                <span class="card__checkbox-cnt">Pé direito (1,5%)</span>
+                            </label><br>
+                            <input type="checkbox" id="regiao-entre-pe-e-joelho-esquerdos" name="amputations"
+                                value="4.4">
+                            <label for="regiao-entre-pe-e-joelho-esquerdos" class="card__checkbox">
+                                <span class="card__checkbox-cnt">Região entre pé e joelho esquerdo (4,4%)</span>
+                            </label><br>
+                            <input type="checkbox" id="regiao-entre-pe-e-joelho-direitos" name="amputations"
+                                value="4.4">
+                            <label for="regiao-entre-pe-e-joelho-direitos" class="card__checkbox">
+                                <span class="card__checkbox-cnt">Região entre pé e joelho direito (4,4%)</span>
+                            </label><br>
+                            <input type="checkbox" id="regiao-entre-joelho-e-quadril-esquerdos" name="amputations"
+                                value="10.1">
+                            <label for="regiao-entre-joelho-e-quadril-esquerdos" class="card__checkbox">
+                                <span class="card__checkbox-cnt">Região entre joelho e quadril esquerdo (coxa)
+                                    (10,1%)</span>
+                            </label><br>
+                            <input type="checkbox" id="regiao-entre-joelho-e-quadril-direitos" name="amputations"
+                                value="10.1">
+                            <label for="regiao-entre-joelho-e-quadril-direitos" class="card__checkbox">
+                                <span class="card__checkbox-cnt">Região entre joelho e quadril direito (coxa)
+                                    (10,1%)</span>
+                            </label><br>
+                        </div>
+                        <!-- Campo de Retenção de Líquidos -->
+                        <label for="fluid-retention" class="t-card__label">
+                            <span class="card__label-cnt">Retenção de líquidos (kg):</span>
+                        </label>
+                        <input type="number" step="0.1" min="0" id="fluid-retention" name="fluid-retention"
+                            class="card__input card__input-cnt t-card__input">
+                        <!-- Botão de cálculo -->
+                        <button type="submit" id="calculate-ideal-weight" class="button t-button" title="Calcular">
+                            <span class="button-cnt">Calcular peso ideal</span>
+                        </button>
+                        <!-- Componente de Resultado -->
+                        <div class="card__result t-card__result is-hidden" id="ideal-weight-result">
+                            <h3 class="result__title t-result__title">Resultado</h3>
+                            <p>O peso ideal é:</p>
+                            <p class="result__value t-result__value">
+                                <span id="ideal-weight" class="result__value-txt">0</span>
+                            </p>
+                            <p>Peso considerando amputações e removendo edemas:</p>
+                            <p class="result__value t-result__value">
+                                <span id="estimated-weight-2" class="result__value-txt">0</span>
+                            </p>
+                        </div>
+                    </form>
+                </article>
+                <!-- *Card de cálculo de ajuste de peso -->
+                <article class="card t-card">
+                    <h2 class="card__title t-card__title">Ajuste de Peso</h2>
+                    <details class="info-toggle t-info-toggle">
+                        <summary>Fundamentação teórica</summary>
+                        <p id="peso-corporal-ajuste" class="u-text-justify" data-markdown="true"></p>
+                    </details>
+                    <form action="" class="card__form">
+                        <!-- Campo de Peso Atual -->
+                        <label for="current-weight-2" class="t-card__label">
+                            <span class="card__label-cnt">Peso atual (kg):</span>
+                        </label>
+                        <input type="number" step="0.01" min="0" id="current-weight-2" name="current-weight-2"
+                            class="card__input card__input-cnt t-card__input" required>
+                        <!-- Campo de Peso Ideal -->
+                        <label for="ideal-weight-2" class="t-card__label">
+                            <span class="card__label-cnt">Peso ideal (kg):</span>
+                        </label>
+                        <input type="number" step="0.01" min="0" id="ideal-weight-2" name="ideal-weight-2"
+                            class="card__input card__input-cnt t-card__input" required>
+                        <!-- Botão de cálculo -->
+                        <button type="submit" id="calculate-adjusted-weight" class="button t-button" title="Calcular">
+                            <span class="button-cnt">Ajustar peso</span>
+                        </button>
+                        <!-- Componente de Resultado -->
+                        <div class="card__result t-card__result is-hidden" id="adjusted-weight-result">
+                            <h3 class="result__title t-result__title">Resultado</h3>
+                            <p>O peso ajustado é:</p>
+                            <p class="result__value t-result__value">
+                                <span id="adjusted-weight" class="result__value-txt">0</span>
+                            </p>
+                        </div>
+                    </form>
+                </article>
+                <!-- *Card de cálculo de perda de peso ponderal -->
+                <article class="card t-card">
+                    <h2 class="card__title t-card__title">Perda de Peso Ponderal</h2>
+                    <details class="info-toggle t-info-toggle">
+                        <summary>Fundamentação teórica</summary>
+                        <p id="peso-corporal-perda-ponderal" class="u-text-justify" data-markdown="true"></p>
+                    </details>
+                    <form action="" class="card__form">
+                        <!-- Campo de Peso Atual -->
+                        <label for="current-weight-3" class="t-card__label">
+                            <span class="card__label-cnt">Peso atual (kg):</span>
+                        </label>
+                        <input type="number" step="0.01" id="current-weight-3" name="current-weight-3" min="0"
+                            class="card__input card__input-cnt t-card__input" required>
+                        <!-- Campo de Peso Ideal -->
+                        <label for="usual-weight" class="t-card__label">
+                            <span class="card__label-cnt">Peso usual (kg):</span>
+                        </label>
+                        <input type="number" step="0.01" id="usual-weight" name="usual-weight" min="0"
+                            class="card__input card__input-cnt t-card__input" required>
+
+                        <!-- Seletor de Tempo -->
+                        <label for="time" class="t-card__label">
+                            <span class="card__label-cnt">Período de observação:</span>
+                        </label>
+                        <select name="time" id="time" class="card__select card__select-cnt t-card__select">
+                            <option value="7">1 semana</option>
+                            <option value="30">1 mês</option>
+                            <option value="90">3 meses</option>
+                            <option value="180">6 meses</option>
+                        </select>
+                        <!-- Botão de cálculo -->
+                        <button type="submit" id="calculate-ponderal-weight-loss" class="button t-button"
+                            title="Calcular">
+                            <span class="button-cnt">Calcular perda de peso ponderal</span>
+                        </button>
+                        <!-- Componente de Resultado -->
+                        <div class="card__result t-card__result is-hidden" id="ponderal-weight-loss-result">
+                            <h3 class="result__title t-result__title">Resultado</h3>
+                            <p>A perda de peso ponderal é:</p>
+                            <p class="result__value t-result__value">
+                                <span id="ponderal-weight-loss" class="result__value-txt">0</span>
+                            </p>
+                        </div>
+                    </form>
+                </article>
+            </section>
+        </main>
+        <!-- Botão de Voltar ao Topo -->
+        <button id="l-floating-button" class="button-flt t-button-circular" title="Voltar ao topo">
+            <picture>
+                <img src="/img/chevron-up-outline.svg" alt="Voltar para o topo">
+            </picture>
+        </button>
+    </div>
+</body>
+<!-- Funções JavaScript -->
+<script type="module" src="js/main.js"></script>
+<!-- Equações Matemáticas -->
+<script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+        });
+</script>
+<script defer type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+</html>

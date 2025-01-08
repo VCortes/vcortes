@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Size</title>
+</head>
+<style>
+    .background {
+        background-image: url(https://www.mozilla.org/media/img/logos/firefox/logo-quantum.9c5e96634f92.png);
+        width: 320px;
+        height: 160px;
+        background-color: black;
+    }
+
+    .contain {
+        background-size: contain;
+    }
+
+    .no-repeat {
+        background-repeat: no-repeat;
+    }
+
+    .cover {
+        background-size: cover;
+        background-position: center;
+    }
+
+    .auto-horizontal {
+        background-size: auto auto;
+    }
+</style>
+
+<body>
+    <h1>background-size: contain;</h1>
+    <p>
+        Escala a imagem para caber dentro do elemento, mantendo a proporção original. Se o contêiner for maior que a
+        imagem
+        será repetida, a menos que a propriedade background-repeat seja definida como no-repeat.
+    </p>
+    <div class="background contain"></div>
+    <h2>no-repeat</h2>
+    <div class="background contain no-repeat"></div>
+    <h1>background-size: cover;</h1>
+    <p>
+        Escala a imagem para cobrir todo o elemento, mantendo a proporção original. A imagem pode ser cortada se o
+        contêiner for maior que a imagem.
+    </p>
+    <div class="background cover"></div>
+    <h1>background-size: auto auto</h1>
+    <p>
+        A imagem é exibida em seu tamanho original.
+    </p>
+    <div class="background auto-horizontal no-repeat">
+    </div>
+    <h1>background-size: 50% 30%</h1>
+    <p>
+        Dimensões da imagem em porcentagem.
+    </p>
+    <div class="background no-repeat" style="background-size: 50% 30%;"></div>
+</body>
+
+</html>

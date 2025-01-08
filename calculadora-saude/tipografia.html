@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tipografia</title>
+    <!-- Fonte Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Equações Matemáticas -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+        });
+    </script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    <!-- Conversor Markdown -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js">
+    </script>
+</head>
+
+<body id="l-page" class="t-page">
+    <div class="page-cnt">
+        <!-- Cabeçalho/Navegação -->
+        <nav>
+            <section class="navbar t-navbar">
+                <div class="navbar-ctnr">
+                    <label for="calculator-select" class="navbar__label">
+                        <span class="navbar__label-text">
+                            Escolha a calculadora:
+                        </span></label>
+                    <select name="calculator-select" class="navbar__select t-navbar__select"
+                        onchange="window.location.href=this.value">
+                        <option value="peso-corporal.html">
+                            <span class="navbar__select-text">Peso Corporal</span>
+                        </option>
+                        <option value="antropometria.html">
+                            <span class="navbar__select-text">Antropometria</span>
+                        </option>
+                        <option value="necessidades-nutricionais.html">
+                            <span class="navbar__select-text">Necessidades Nutricionais</span>
+                        </option>
+                        <option value="tipografia.html" selected>
+                            <span class="navbar__select-text">Tipografia</span>
+                        </option>
+                    </select>
+                </div>
+            </section>
+        </nav>
+        <!-- Seção principal -->
+        <main id="l-main">
+            <!-- Título principal -->
+            <section class="introduction">
+                <div class="introduction-cnt">
+                    <h1 class="introduction__title t-introduction__title">
+                        Tipografia
+                    </h1>
+                    <p>
+                        Exemplo de utilização de tipografia neste projeto.
+                    </p>
+                </div>
+            </section>
+            <!-- Formulário de cálculo de peso ideal -->
+            <section>
+                <!-- Card de informações adicionais -->
+                <article class="card t-card">
+                    <h2 class="card__title t-card__title">Guia de Sintaxe Markdown</h2>
+                    <div data-markdown="true" id="typography">
+                    </div>
+                </article>
+            </section>
+        </main>
+        <!-- Botão de Voltar ao Topo -->
+        <button id="l-floating-button" class="button-flt t-button-circular" title="Voltar ao topo">
+            <picture>
+                <img src="/img/chevron-up-outline.svg" alt="Voltar para o topo">
+            </picture>
+        </button>
+    </div>
+</body>
+<script type="module" src="js/main.js"></script>
+
+</html>

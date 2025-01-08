@@ -1,0 +1,61 @@
+@layer module {
+
+    /* Imagens com estilo genérico e responsivo */
+    .markdown-img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 1em auto;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Efeito hover opcional */
+    .markdown-img:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: box-shadow 0.3s ease-in-out;
+    }
+
+    /* Layout básico e padronização */
+    .markdown-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+        font-family: sans-serif;
+        /* Ajuste conforme preferir */
+        font-size: 0.95rem;
+    }
+
+    /* Cabeçalhos */
+    .markdown-table thead th {
+        background-color: #f2f2f2;
+        color: #333;
+        font-weight: bold;
+        text-transform: uppercase;
+        padding: 0.75rem;
+        border-bottom: 2px solid #ccc;
+    }
+
+    /* Linhas pares e ímpares */
+    .markdown-table tbody tr:nth-child(odd) {
+        background-color: #fafafa;
+    }
+
+    .markdown-table tbody tr:nth-child(even) {
+        background-color: #ffffff;
+    }
+
+    /* Hover nas linhas */
+    .markdown-table tbody tr:hover {
+        background-color: #f5f5f5;
+    }
+
+    /* Células */
+    .markdown-table th,
+    .markdown-table td {
+        border: 1px solid #ccc;
+        padding: 0.75rem;
+        text-align: left;
+        vertical-align: middle;
+    }
+}

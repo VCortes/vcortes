@@ -1,0 +1,112 @@
+@layer module {
+    .card {
+        padding: 1rem;
+        margin-bottom: 3em;
+    }
+
+    .card__title {
+        margin-bottom: 1em;
+        margin-top: 0;
+        display: inline-block;
+    }
+
+    .card__form {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        margin-top: 1em;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 500px;
+    }
+
+    .card__label-cnt {
+        font-weight: var(--font-weight-bold);
+    }
+
+    .card__input,
+    .card__select {
+        padding: 0.6em;
+    }
+
+    .card__input-cnt,
+    .card__select-cnt {
+        font-size: 1em;
+    }
+
+    .card__input-cnt::placeholder {
+        color: var(--t-placeholder-color);
+    }
+
+    .card__result {
+        padding: 1rem;
+        margin-top: 1.5em;
+    }
+
+    .result__title {
+        margin-top: 0px;
+    }
+
+    .result__value {
+        padding: 10px;
+        width: fit-content;
+        margin: 10px auto;
+    }
+
+    .result__value-txt {
+        font-size: var(--font-size-x-large);
+        color: var(--t-on-secondary-container);
+        font-weight: var(--font-weight-bold);
+        text-align: center;
+    }
+}
+
+@layer state {
+    .is-hidden {
+        display: none;
+    }
+}
+
+@layer theme {
+    .t-card {
+        background-color: var(--t-surface-container-lowest);
+        border-radius: 8px;
+        box-shadow: 0 2px 8px var(--t-shadow);
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    .t-card__title {
+        color: var(--t-secondary-color);
+        border-bottom: 2px solid var(--t-secondary-color);
+    }
+
+    .t-card__label {
+        color: var(--t-primary-color);
+    }
+
+    .t-card__input,
+    .t-card__select {
+        border: 1px solid var(--t-primary-container);
+        border-radius: 4px;
+        background-color: var(--t-surface-container);
+    }
+
+    .t-card__result {
+        border-style: solid;
+        border-radius: 0.25em;
+        border-width: 1px;
+        border-color: var(--t-outline-variant);
+        background-color: var(--t-surface-container-lowest);
+    }
+
+    .t-result__title {
+        color: #ff6666;
+        border-bottom: 1px solid var(--t-secondary-color);
+    }
+
+    .t-result__value {
+        background-color: var(--t-secondary-container);
+        border: 1px solid var(--t-secondary-color);
+        border-radius: 0.25em;
+    }
+}

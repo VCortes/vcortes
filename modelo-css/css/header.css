@@ -1,0 +1,22 @@
+@layer module {
+
+    /* Conteúdo do Header */
+    .header__titulo {
+        text-align: center;
+        font-size: 32px;
+        margin: 0;
+    }
+
+}
+
+@layer state {}
+
+@layer theme {
+    .t-header {
+        background-color: var(--t-surface-color);
+    }
+
+    .t-header__titulo {
+        color: var(--t-on-surface-color);
+    }
+}

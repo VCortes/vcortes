@@ -1,0 +1,36 @@
+@layer module {
+
+    /* Estrutura do Botão */
+    .botao {
+        cursor: pointer;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none; 
+    }
+}
+
+@layer state {
+
+    /* Estado do Botão */
+    .botao:hover {
+        filter: brightness(0.9);
+    }
+
+    /* Estado do Botão */
+    .botao:active {
+        filter: brightness(0.8);
+    }
+}
+
+@layer theme {
+    .t-botao__primario {
+        background-color: var(--t-primary-color);
+        color: var(--t-on-primary);
+    }
+
+    /* Skin do Botão Secundário */
+    .t-botao__secundario {
+        background-color: var(--t-secondary-container);
+        color: var(--t-on-secondary-container);
+    }
+}

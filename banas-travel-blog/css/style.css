@@ -1,0 +1,104 @@
+html {
+    font-size: 16px;
+}
+
+.image-container {
+    overflow: hidden;
+}
+
+.image-container img {
+    max-width: 100%;
+    display: block;
+    height: auto;
+    margin: auto;
+}
+
+#banner {
+    height: 46rem;
+    background-image: url('../images/camel-background.png');
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#banner h1 {
+    font-size: 3.75rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: white;
+}
+
+@media only screen and (max-width: 660px) {
+    #banner h1 {
+        font-size: 2.5rem;
+    }
+
+    .images .image-container {
+        display: block !important;
+        max-width: 80% !important;
+        margin: auto;
+    }
+
+    #blog .post {
+        width: 80% !important;
+    }
+}
+
+#blog {
+    width: 90%;
+    margin: auto;
+}
+
+#blog .post {
+    width: 52%;
+    margin: 10% auto 10% auto;
+    font-family: 'Merriweather', serif;
+    font-weight: 300;
+    font-size: 1rem;
+    color: #444444;
+    line-height: 1.8;
+    text-align: center;
+}
+
+.post h2 {
+    font-size: 1.875em;
+}
+
+.post h3 {
+    font-size: 1.125em;
+    color: #999999;
+}
+
+.post .opening-line {
+    margin-top: 4.1875rem;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+    display: block;
+}
+
+
+.post p,
+.post .image-container {
+    margin-bottom: 2rem;
+}
+
+.images {
+    margin-bottom: 20%;
+    text-align: center;
+}
+
+.images .image-container {
+    display: inline-block;
+    max-width: 49%;
+}
+
+footer {
+    padding: 4rem 0;
+    border-top: 1px solid #999999;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.125rem;
+    color: #999999;
+    text-align: center;
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>WebGL Canvas Zoom</title>
+    <style>
+        #container {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            cursor: default;
+        }
+
+        #container canvas {
+            width: 100%;
+            height: 100%;
+            transform-origin: top left;
+        }
+
+        * {
+            border: 2px solid rgb(248, 51, 51);
+        }
+
+        body {
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <canvas></canvas>
+    </div>
+    <script>
+        let scale = 1;
+        const canvas = document.getElementsByTagName('canvas')[0];
+        const container = document.getElementById('container');
+        const ctx = canvas.getContext('2d');
+        updateCanvasScale();
+        function zoomIn() {
+            scale += 0.1;
+            updateCanvasScale();
+        }
+        function zoomOut() {
+            scale = Math.max(1, scale - 0.1);
+            updateCanvasScale();
+        }
+        function resetZoom() {
+            scale = 1;
+            updateCanvasScale();
+        }
+        function updateCanvasScale() {
+            canvas.style.transform = `scale(${scale})`;
+            if (scale === 1) {
+                container.style.overflow = 'hidden';
+            } else {
+                container.style.overflow = 'auto';
+            }
+        }
+        function drawGrid() {
+            const colors = ['#365E32', '#81A263', '#E7D37F', '#FD9B63'];
+            const gridSize = 50; // tamanho de cada quadrado do grid
+            const rows = Math.ceil(canvas.height / gridSize);
+            const cols = Math.ceil(canvas.width / gridSize);
+            for (let row = 0; row < rows; row++) {
+                for (let col = 0; col < cols; col++) {
+                    const colorIndex = (row + col) % colors.length;
+                    ctx.fillStyle = colors[colorIndex];
+                    ctx.fillRect(col * gridSize, row * gridSize, gridSize, gridSize);
+                }
+            }
+        }
+        // Optional: Resize the canvas to fit the container initially
+        window.onload = function () {
+            canvas.width = container.clientWidth;
+            canvas.height = container.clientHeight;
+            drawGrid();
+        }
+    </script>
+</body>
+
+</html>

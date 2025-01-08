@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleção de Experimento</title>
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --primary-color-hover: #0056b3;
+            --background-color: #f4f4f9;
+            --container-bg: #ffffff;
+            --text-color: #333;
+            --border-color: #ddd;
+            --input-bg: #f9f9f9;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --font-family: Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--background-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            min-height: 100vh;
+            margin: 0;
+            padding: 10px;
+        }
+
+        .container {
+            background-color: var(--container-bg);
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px var(--shadow-color);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .selector-container,
+        .url-container {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        select,
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+            background-color: var(--input-bg);
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-color-hover);
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: -10px;
+            margin-bottom: 10px;
+            display: none;
+        }
+
+        @media (max-width: 500px) {
+            .container {
+                padding: 15px 20px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            .btn {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container hidden" aria-labelledby="experiment-title">
+        <h1 id="experiment-title">Seleção de Experimento</h1>
+        <form id="experiment-form" aria-describedby="experiment-description">
+            <div class="selector-container">
+                <label for="experiment-select">Selecione um experimento:</label>
+                <select id="experiment-select" aria-required="true">
+                    <!-- As opções serão inseridas aqui pelo JavaScript -->
+                </select>
+            </div>
+            <button type="button" id="open-experiment" class="btn">Abrir Experimento</button>
+        </form>
+    </div>
+
+    <div class="container" aria-labelledby="url-title">
+        <h1 id="url-title">Link Direto</h1>
+        <form id="url-form" aria-describedby="url-description">
+            <label for="url-input">Insira a URL:</label>
+            <input type="text" id="url-input" placeholder="Digite a URL" aria-required="true" />
+            <span id="url-error" class="error-message">Por favor, insira uma URL válida.</span>
+            <button type="button" id="visit-url" class="btn">Abrir Experimento</button>
+        </form>
+    </div>
+
+    <script>
+        // Mapeamento das opções de experimento
+        const experimentOptions = {
+            "Experimento 1": 1,
+            "Experimento 4": 4,
+            "Experimento 8": 8,
+            "Experimento 10": 10,
+            "Experimento 19": 19,
+            "Experimento 30": 30,
+            "Experimento 36": 36,
+            "Experimento 53": 53,
+            "Experimento 66": 66,
+            "Experimento 77": 77,
+            "Experimento 88": 88,
+            "Experimento 100": 100,
+            "Experimento 108": 108,
+            "Experimento 109": 109,
+            "Experimento 133": 133,
+            "Experimento 145": 145,
+            "Experimento 184": 184,
+            "Experimento 300": 300,
+            "Experimento 306": 306,
+            "Experimento 310": 310,
+            "Experimento 315": 315,
+            "Experimento 339": 339,
+            "Experimento 397": 397,
+            "Experimento 413": 413,
+            "Experimento 438": 438,
+            "Experimento 446": 446,
+            "Experimento 454": 454,
+            "Experimento 496": 496,
+            "Experimento 498": 498,
+            "Experimento 515": 515,
+            "Experimento 550": 550,
+            "Experimento 567": 567,
+            "Experimento 612": 612,
+            "Experimento 693": 693,
+            "Experimento 695": 695,
+            "Experimento 698": 698,
+            "Experimento 705": 705,
+            "Experimento 711": 711,
+            "Experimento 719": 719,
+            "Experimento 767": 767,
+            "Experimento 779": 779,
+            "Experimento 912": 912,
+            "Experimento 920": 920,
+            "Experimento 1040": 1040,
+            "Experimento 1161": 1161,
+            "Experimento 1332": 1332,
+            "Experimento 1082": 1082,
+            "Experimento 1089": 1089,
+            "Experimento 1090": 1090
+        };
+
+        // Ordenar as opções por ID
+        const sortedExperimentOptions = Object.entries(experimentOptions)
+            .sort((a, b) => a[1] - b[1]);
+
+        // Função para preencher o seletor de experimentos
+        function populateExperimentSelect() {
+            const selectElement = document.getElementById('experiment-select');
+            sortedExperimentOptions.forEach(([label, value]) => {
+                const option = document.createElement('option');
+                option.value = value;
+                option.textContent = label;
+                selectElement.appendChild(option);
+            });
+        }
+
+        // Função para transformar a URL
+        function transformUrl(url) {
+            try {
+                const urlObj = new URL(url);
+                const protocol = urlObj.protocol ? urlObj.protocol.replace(':', '') : 'https';
+                const hostname = urlObj.hostname;
+                let port = urlObj.port;
+                if (!port) {
+                    port = protocol === 'http' ? '80' : '443';
+                }
+                let path = urlObj.pathname + (urlObj.search || '');
+                if (path.startsWith('/')) {
+                    path = path.slice(1);
+                }
+                return `unitydl://algetecbrowser?debug=true&protocol=${protocol}&ipAddress=${hostname}&portNumber=${port}&path=${encodeURIComponent(path)}`;
+            } catch (error) {
+                return null;
+            }
+        }
+
+        // Função para lidar com a abertura do experimento
+        function openExperiment() {
+            const selectElement = document.getElementById('experiment-select');
+            const selectedValue = selectElement.value;
+            if (selectedValue) {
+                const link = `unitydl://algetecbrowser?hardlink=true&id=${selectedValue}`;
+                window.location.href = link;
+            }
+        }
+
+        // Função para lidar com a visita à URL transformada
+        function visitTransformedUrl() {
+            const urlInput = document.getElementById('url-input').value.trim();
+            const errorMessage = document.getElementById('url-error');
+            if (urlInput === "") {
+                errorMessage.textContent = "Por favor, insira uma URL.";
+                errorMessage.style.display = "block";
+                return;
+            }
+
+            try {
+                new URL(urlInput); // Validação básica da URL
+            } catch (_) {
+                errorMessage.textContent = "Por favor, insira uma URL válida.";
+                errorMessage.style.display = "block";
+                return;
+            }
+
+            const transformedUrl = transformUrl(urlInput);
+            if (transformedUrl) {
+                errorMessage.style.display = "none";
+                window.location.href = transformedUrl;
+            } else {
+                errorMessage.textContent = "Erro ao transformar a URL. Verifique o formato.";
+                errorMessage.style.display = "block";
+            }
+        }
+
+        // Inicialização após o carregamento da página
+        window.addEventListener('DOMContentLoaded', () => {
+            populateExperimentSelect();
+
+            document.getElementById('open-experiment').addEventListener('click', openExperiment);
+            document.getElementById('visit-url').addEventListener('click', visitTransformedUrl);
+
+            // Remover mensagem de erro ao digitar
+            document.getElementById('url-input').addEventListener('input', () => {
+                const errorMessage = document.getElementById('url-error');
+                if (errorMessage.style.display === "block") {
+                    errorMessage.style.display = "none";
+                }
+            });
+        });
+
+        // Exemplo de uso no console
+        /*
+        const originalUrl = 'https://algetec.grupoa.education/plataforma/course/2255575';
+        const newUrl = transformUrl(originalUrl);
+        console.log(newUrl);
+        */
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+@layer module {
+    .button {
+        padding: 0.8em;
+        align-self: center;
+        min-width: 50%;
+    }
+
+    .button-flt {
+        width: 50px;
+        height: 50px;
+    }
+
+    .button-cnt {
+        font-weight: var(--font-weight-bold);
+        text-transform: uppercase;
+    }
+}
+
+@layer state {
+    .button:hover {
+        transform: scale(1.05);
+    }
+
+    .button-flt:hover {
+        transform: translateY(-4px);
+    }
+}
+
+@layer theme {
+    .t-button {
+        background-color: var(--t-secondary-color);
+        color: var(--t-on-secondary);
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+    }
+
+    /* Floating button */
+    .t-button-circular {
+        border-radius: 50%;
+        border: none;
+        background-color: var(--t-secondary-color);
+        cursor: pointer;
+        box-shadow: 0 2px 5px var(--t-shadow);
+        transition: background-color 0.3s, transform 0.2s;
+    }
+}

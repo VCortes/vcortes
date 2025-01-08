@@ -1,0 +1,42 @@
+.draggable-button {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #122231;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: default;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: width 0.3s ease, border-radius 0.3s ease;
+    overflow: hidden;
+}
+
+.draggable-button:hover {
+    width: 220px;
+    border-radius: 30px;
+    cursor: move;
+}
+
+.question-icon {
+    width: 30px;
+    /* Ajuste o tamanho se necessário */
+    height: 30px;
+    fill: #fff;
+}
+
+.button-text {
+    color: #fff;
+    margin-left: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    white-space: pre-line;
+    line-height: 1.2em;
+    font-family: 'Open Sans Hebrew', Arial, Helvetica, sans-serif;
+}
+
+.draggable-button:hover .button-text {
+    opacity: 1;
+}

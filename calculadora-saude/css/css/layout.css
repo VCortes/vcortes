@@ -1,0 +1,19 @@
+/* Layout da página */
+#l-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#l-main {
+    width: 95%;
+    max-width: 1200px;
+    margin: 2em auto;
+    flex-grow: 1;
+}
+
+#l-floating-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            width: 150pt;
+            height: 40pt;
+            margin: 10pt;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        body {
+            background-color: transparent;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            margin: 150px;
+        }
+
+        main {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        function restart() {
+            // Visita o link uniwebview://restart
+            window.location.href = "uniwebview://restart";
+            console.log('Restart');
+        }
+        function renderOnTexture() {
+            const myContent = {
+                "callfunction": "RenderOnTexture",
+            };
+            sendMessageToUnity(myContent);
+        }
+        function renderOnScreen() {
+            const myContent = {
+                "callfunction": "RenderOnScreen",
+            };
+            sendMessageToUnity(myContent);
+        }
+    </script>
+    <div class="container">
+        <main>
+            <a href="uniwebview://restart">
+                <button>Restart</button>
+            </a>
+            <a href="uniwebview://close">
+                <button>Close Page</button>
+            </a>
+            <a href="uniwebview://debug?log=teste123...">
+                <button>Debug Log</button>
+            </a>
+            <a href="uniwebview://localpage?name=404">
+                <button>Local 404 Page</button>
+            </a>
+            <a href="https://www.virtuaslab.net/ualabs/ualab/685-android/LaboratorioVirtual.apk">
+                <button>Download file</button>
+            </a>
+            <a href="https://zingchart.github.io/zingtouch/#getting-started">
+                <button>Google</button>
+            </a>
+            <a href="unitydl://algetecbrowser?debug=true&debug?log=teste123&ipAddress=192_168_10_12&portNumber=5500&path=uniwebview_html">
+                <button>Abrir App</button>
+            </a>
+            <a href="unitydl://algetecbrowser?hardlink=true&id=1">
+                <button>Abrir App JSON 1 </button>
+            </a>
+            <a href="unitydl://algetecbrowser?hardlink=true&id=2">
+                <button>Abrir App JSON 2 </button>
+            </a>
+            <a
+                href="https://creator-files.plataforma.grupoa.education/learning-unit/23001/94632d27-8768-40dc-adc7-faf602f6d460/index.html?authorization=c50683b5-badb-402f-8f83-5eaedd300273">
+                <button>Laboratório Plataforma</button>
+            </a>
+            <a
+                href="https://statics-marketplace.plataforma.grupoa.education/algetec/241d15f3-aa84-4e45-9890-90376498bd39/index.html?authorization=44f2d79d-4d46-4766-97ea-c2ba464173e3">
+                <button>Laboratório MarketPlace</button>
+            </a>
+            <a href="/pinchexpand2.html">
+                <button>Pinch and Expand</button>
+            </a>
+            <button onmousedown="renderOnTexture()" ontouchstart="renderOnTexture()">
+                Render on texture
+            </button>
+            <button onmousedown="renderOnScreen()" ontouchstart="renderOnScreen()">
+                Render on Screen
+            </button>
+        </main>
+    </div>
+</body>
+
+</html>

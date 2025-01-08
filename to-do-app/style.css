@@ -1,0 +1,92 @@
+.box.day {
+    background-color: steelblue;
+}
+
+.box.task {
+    background-color: khaki;
+}
+
+.box {
+    border: 1px solid white;
+    display: flex;
+    height: 125px;
+    padding: 10px;
+    width: 125px;
+    overflow: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+}
+
+.reminders {
+    background-color: khaki;
+    display: flex;
+    flex-grow: 1;
+}
+
+.reminders h3 {
+    width: 100%;
+    font-size: 30px;
+    margin: 10px;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    min-height: 200px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.secondary-background {
+    background-color: white;
+}
+
+.tagline {
+    color: slategray;
+    font-family: 'Quicksand', sans-serif;
+    line-height: 125px;
+}
+
+.task p {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.week {
+    flex-direction: column;
+    display: inline-flex;
+    flex-grow: 1;
+}
+
+body {
+    background-color: whitesmoke;
+    border: 0;
+    font-family: 'Roboto Mono', monospace;
+    font-family: 'Rock Salt', cursive;
+    margin: 0;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+}
+
+footer {
+    font-size: 24px;
+}
+
+header h1 {
+    background-color: steelblue;
+    color: khaki;
+    line-height: 100px;
+    margin: 0;
+}
+
+header h2 {
+    margin: 0;
+}
