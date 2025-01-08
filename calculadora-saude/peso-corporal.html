@@ -99,8 +99,8 @@
                         <label for="age" class="t-card__label">
                             <span class="card__label-cnt">Idade (anos):</span>
                         </label>
-                        <input type="number" id="age" name="age" class="card__input  min card__input-cnt t-card__input" min="19" max="80"
-                            required>
+                        <input type="number" id="age" name="age" class="card__input  min card__input-cnt t-card__input"
+                            min="19" max="80" required>
                         <!-- Botão de cálculo -->
                         <button type="submit" id="calculate-estimated-weight" class="button t-button" title="Calcular">
                             <span class="button-cnt">Estimar peso</span>
@@ -147,8 +147,8 @@
                         <label for="age" class="t-card__label">
                             <span class="card__label-cnt">Idade (anos):</span>
                         </label>
-                        <input type="number" id="age-2" step="1" min="0" name="age" class="card__input card__input-cnt t-card__input"
-                            required>
+                        <input type="number" id="age-2" step="1" min="0" name="age"
+                            class="card__input card__input-cnt t-card__input" required>
                         <!-- Seletor Amputações -->
                         <label for="amputations" class="t-card__label">
                             <span class="card__label-cnt">Amputações:</span>
@@ -326,13 +326,12 @@
 <!-- Funções JavaScript -->
 <script type="module" src="js/main.js"></script>
 <!-- Equações Matemáticas -->
-<script type="text/x-mathjax-config">
+<script async defer type="text/x-mathjax-config">
         MathJax.Hub.Config({
             tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
         });
 </script>
-<script defer type="text/javascript"
-    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-    </script>
+<script type="text/javascript" async defer
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 </html>
