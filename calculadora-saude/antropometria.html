@@ -8,7 +8,6 @@
     <!-- Fonte Roboto -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/style.css">
-
     <!-- Conversor Markdown -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js">
     </script>
@@ -50,12 +49,112 @@
                     <h1 class="introduction__title t-introduction__title">
                         Antropometria
                     </h1>
-                    <p>
+                    <p class="u-text-justify">
                         Em construção...
                     </p>
+                    <ul>
+                        <li>Peso para cada estado nutricional e destaque para IMC atual. Tabela separada para idosos
+                        </li>
+                        <li>Circunferência da cintura (CC)</li>
+                        <li>Circunferência do braço (CB)</li>
+                        <li>Dobra Cutânea Tricipital (DCT)</li>
+                        <li>Área Muscular do Braço (AMBc)</li>
+                        <li>Circunferência da Panturrilha(CP) (idosos)</li>
+                    </ul>
                 </div>
             </section>
-
+            <section>
+                <!-- *Card de IMC -->
+                <article class="card t-card">
+                    <h2 class="card__title t-card__title">Estimativa de Peso</h2>
+                    <details class="info-toggle t-info-toggle">
+                        <summary>Fundamentação teórica</summary>
+                        <p id="antopometria-imc" class="u-text-justify" data-markdown="true"></p>
+                    </details>
+                    <form action="" class="card__form">
+                        <!-- Campo de Peso Atual -->
+                        <label for="current-weight" class="t-card__label">
+                            <span class="card__label-cnt">Peso atual (kg):</span>
+                        </label>
+                        <input type="number" step="0.01" min="0" id="current-weight" name="current-weight"
+                            class="card__input card__input-cnt t-card__input" required>
+                        <!-- Campo de Altura -->
+                        <label for="height" class="t-card__label">
+                            <span class="card__label-cnt">Altura (m):</span>
+                        </label>
+                        <input type="number" step="0.01" min="0" id="height" name="height"
+                            class="card__input card__input-cnt t-card__input" required>
+                        <!-- Seletor Idade -->
+                        <label for="age" class="t-card__label">
+                            <span class="card__label-cnt">Idade (anos):</span>
+                        </label>
+                        <input type="number" id="age" step="1" min="0" name="age"
+                            class="card__input card__input-cnt t-card__input" required> <!-- Botão de cálculo -->
+                        <button type="submit" id="calculate-imc" class="button t-button" title="Calcular">
+                            <span class="button-cnt">Calcular IMC</span>
+                        </button>
+                        <!-- Componente de Resultado -->
+                        <div class="card__result t-card__result is-hidden" id="imc-result">
+                            <h3 class="result__title t-result__title">Resultado</h3>
+                            <p>O IMC é:</p>
+                            <p class="result__value t-result__value">
+                                <span id="imc" class="result__value-txt">0</span>
+                            </p>
+                            <p>Tabela de classificação:</p>
+                            <p id="imc-table" data-markdown="true" data-file-content="false">#Teste</p>
+                        </div>
+                    </form>
+                </article>
+                <!-- *Card da Circunferência da Cintura -->
+                <article class="card t-card">
+                    <h2 class="card__title t-card__title">Circunferência da Cintura (CC)</h2>
+                    <p id="antopometria-cc" class="u-text-justify" data-markdown="true"></p>
+                </article>
+                <!-- *Card da Circunferência do Braço -->
+                <article class="card t-card">
+                    <h2 class="card__title t-card__title">Circunferência Braquial (CB)</h2>
+                    <details class="info-toggle t-info-toggle">
+                        <summary>Fundamentação teórica</summary>
+                        <p id="antopometria-cb" class="u-text-justify" data-markdown="true"></p>
+                    </details>
+                    <form action="" class="card__form">
+                        <!-- Campo da Circunferência Braquial Obtida -->
+                        <label for="cb-obtained" class="t-card__label">
+                            <span class="card__label-cnt">Circunferência braquial obtida (cm):</span>
+                        </label>
+                        <input type="number" step="0.01" min="0" id="cb-obtained" name="cb-obtained"
+                            class="card__input card__input-cnt t-card__input" required>
+                        <!-- Campo da Idade -->
+                        <label for="cb-age" class="t-card__label">
+                            <span class="card__label-cnt">Idade (anos):</span>
+                        </label>
+                        <input type="number" id="cb-age" step="1" min="0" max="75" name="cb-age"
+                            class="card__input card__input-cnt t-card__input" required>
+                        <!-- Seletor do Gênero -->
+                        <label for="cb-gender" class="t-card__label">
+                            <span class="card__label-cnt">Gênero:</span>
+                        </label>
+                        <select name="cb-gender" id="cb-gender" class="card__select card__select-cnt t-card__select">
+                            <option value="masculino">Masculino</option>
+                            <option value="feminino">Feminino</option>
+                        </select>
+                        <!-- Botão de cálculo -->
+                        <button type="submit" id="calculate-cb" class="button t-button" title="Calcular">
+                            <span class="button-cnt">Calcular Adequação da CB</span>
+                        </button>
+                        <!-- Componente de Resultado -->
+                        <div class="card__result t-card__result is-hidden" id="cb-result">
+                            <h3 class="result__title t-result__title">Resultado</h3>
+                            <p>Adequação da CB:</p>
+                            <p class="result__value t-result__value">
+                                <span id="cb" class="result__value-txt">0</span>
+                            </p>
+                            <p>Interpretação:</p>
+                            <p id="cb-interpretation"></p>
+                        </div>
+                </article>
+                </form>
+            </section>
         </main>
         <!-- Botão de Voltar ao Topo -->
         <button id="l-floating-button" class="button-flt t-button-circular" title="Voltar ao topo">
@@ -73,8 +172,5 @@
         tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
     });
 </script>
-<script type="text/javascript" async defer
-    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
 
 </html>

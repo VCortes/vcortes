@@ -1,10 +1,12 @@
 import { scrollToTop } from './scrollToTop.js';
 import { preventDefaultForms, setSubmitButton, showElement } from './forms.js';
-import { setMarkdown } from './markdown.js';
+import { setMarkdown, markdownToHTML } from './markdown.js';
 import { idealWeight } from './idealWeight.js';
 import { estimatedWeight } from './estimatedWeight.js';
 import { adjustedWeight } from './adjustedWeight.js';
 import { ponderalWeightLoss } from './ponderalWeightLoss.js';
+import { calculateIMC } from './imc.js';
+import { armCircumference } from './anthropometry.js';
 
 /* ------------------------- Funcionamento da página ------------------------ */
 setMarkdown();
@@ -52,9 +54,27 @@ setSubmitButton('calculate-ponderal-weight-loss', () => {
     console.log(errorCode);
     showElement('ponderal-weight-loss-result', errorCode < 0);
 });
+/* ----------------------------------- IMC ---------------------------------- */
+setSubmitButton('calculate-imc', () => {
+    const errorCode = calculateIMC('current-weight', 'height', 'age', 'imc', 'imc-table');
+    document.getElementById('imc-table').innerHTML = markdownToHTML(
+        document.getElementById('imc-table').innerHTML
+    );
+    showElement('imc-result', errorCode < 0);
+});
+/* -------------------------- Circunferência do braço ----------------------- */
+setSubmitButton('calculate-cb', () => {
+    const errorCode = armCircumference(
+        'cb-obtained',
+        'cb-age',
+        'cb-gender',
+        'cb',
+        'cb-interpretation'
+    );
+    showElement('cb-result', errorCode < 0);
+});
 /* -------------------------------------------------------------------------- */
 setTimeout(() => {
-    // Adicionar script https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML na página
     const script = document.createElement('script');
     script.src =
         'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
