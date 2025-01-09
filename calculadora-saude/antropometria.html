@@ -60,6 +60,8 @@
                         <li>Dobra Cutânea Tricipital (DCT)</li>
                         <li>Área Muscular do Braço (AMBc)</li>
                         <li>Circunferência da Panturrilha(CP) (idosos)</li>
+                        <li>https://md-to-pdf.fly.dev/</li>
+                        <li>https://www.edufma.ufma.br/wp-content/uploads/woocommerce_uploads/2022/04/Manual-de-Avalia%C3%A7%C3%A3o-Nutricional-de-Adultos-e-Idosos.pdf</li>
                     </ul>
                 </div>
             </section>
@@ -152,8 +154,30 @@
                             <p>Interpretação:</p>
                             <p id="cb-interpretation"></p>
                         </div>
+                    </form>
                 </article>
-                </form>
+                <!-- *Card da Dobra Cutânea Tricipital -->
+                <article class="card t-card">
+                    <h2 class="card__title t-card__title">Dobra Cutânea Tricipital (DCT)</h2>
+                    <details class="info-toggle t-info-toggle">
+                        <summary>Fundamentação teórica</summary>
+                        <p id="antopometria-dct" class="u-text-justify" data-markdown="true"></p>
+                    </details>
+                    <form action="" class="card__form">
+                        <!-- Campo da Dobra Cutânea Tricipital Obtida -->
+                        <label for="dct-obtained" class="t-card__label">
+                            <span class="card__label-cnt">Dobra cutânea tricipital atual (mm):</span>
+                        </label>
+                        <input type="number" step="0.01" min="0" id="dct-obtained" name="dct-obtained"
+                            class="card__input card__input-cnt t-card__input" required>
+                        <!-- Campo da Idade -->
+                        <label for="dct-age" class="t-card__label">
+                            <span class="card__label-cnt">Idade (anos):</span>
+                        </label>
+                        <input type="number" id="dct-age" step="1" min="0" max="75" name="dct-age"
+                            class="card__input card__input-cnt t-card__input" required>
+                        <!-- Seletor do Gênero -->
+                        
             </section>
         </main>
         <!-- Botão de Voltar ao Topo -->
