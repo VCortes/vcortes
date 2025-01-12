@@ -40,5 +40,7 @@ export function markdownToHTML(markdown) {
     const doc = parser.parseFromString(htmlContent, 'text/html');
     doc.querySelectorAll('img').forEach((img) => img.classList.add('markdown-img'));
     doc.querySelectorAll('table').forEach((t) => t.classList.add('markdown-table'));
+    // Torna todos os anchor _blank
+    doc.querySelectorAll('a').forEach((a) => a.setAttribute('target', '_blank'));
     return doc.body.innerHTML;
 }

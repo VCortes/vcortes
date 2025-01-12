@@ -6,7 +6,7 @@ import { estimatedWeight } from './estimatedWeight.js';
 import { adjustedWeight } from './adjustedWeight.js';
 import { ponderalWeightLoss } from './ponderalWeightLoss.js';
 import { calculateIMC } from './imc.js';
-import { armCircumference } from './anthropometry.js';
+import { armCircumference, tricepsSkinfold } from './anthropometry.js';
 
 /* ------------------------- Funcionamento da página ------------------------ */
 setMarkdown();
@@ -72,6 +72,11 @@ setSubmitButton('calculate-cb', () => {
         'cb-interpretation'
     );
     showElement('cb-result', errorCode < 0);
+});
+/* ------------------------ Dobra cutânea tricipital ------------------------ */
+setSubmitButton('calculate-dct', () => {
+    const errorCode = tricepsSkinfold('dct-obtained', 'dct-age', 'dct-gender', 'dct');
+    showElement('dct-result', errorCode < 0);
 });
 /* -------------------------------------------------------------------------- */
 setTimeout(() => {

@@ -1686,28 +1686,361 @@ const femaleTricepsSkinfoldPercentiles = [
         },
     },
 ];
-
-function getPercentil50(age, isWoman) {
-    const percentilesData = isWoman ? femaleCircumferencePercentiles : maleCircumferencePercentiles;
+const maleTricipitalSkinfoldPercentiles = [
+    {
+        minAge: 16.0,
+        maxAge: 16.9,
+        percentiles: {
+            5: 4.0,
+            10: 5.0,
+            25: 6.0,
+            50: 8.0,
+            75: 12.0,
+            90: 17.0,
+            95: 23.0,
+        },
+    },
+    {
+        minAge: 17.0,
+        maxAge: 17.9,
+        percentiles: {
+            5: 4.0,
+            10: 5.0,
+            25: 6.0,
+            50: 7.0,
+            75: 11.0,
+            90: 16.0,
+            95: 19.5,
+        },
+    },
+    {
+        minAge: 18.0,
+        maxAge: 24.9,
+        percentiles: {
+            5: 4.0,
+            10: 5.0,
+            25: 6.5,
+            50: 10.0,
+            75: 14.5,
+            90: 20.0,
+            95: 23.5,
+        },
+    },
+    {
+        minAge: 25.0,
+        maxAge: 29.9,
+        percentiles: {
+            5: 4.0,
+            10: 5.0,
+            25: 7.0,
+            50: 11.0,
+            75: 15.5,
+            90: 21.5,
+            95: 25.0,
+        },
+    },
+    {
+        minAge: 30.0,
+        maxAge: 34.9,
+        percentiles: {
+            5: 4.5,
+            10: 6.0,
+            25: 8.0,
+            50: 12.0,
+            75: 16.5,
+            90: 22.0,
+            95: 25.0,
+        },
+    },
+    {
+        minAge: 35.0,
+        maxAge: 39.9,
+        percentiles: {
+            5: 4.5,
+            10: 6.0,
+            25: 8.5,
+            50: 12.0,
+            75: 16.0,
+            90: 20.5,
+            95: 24.5,
+        },
+    },
+    {
+        minAge: 40.0,
+        maxAge: 44.9,
+        percentiles: {
+            5: 5.0,
+            10: 6.0,
+            25: 8.0,
+            50: 12.0,
+            75: 16.0,
+            90: 21.5,
+            95: 26.0,
+        },
+    },
+    {
+        minAge: 45.0,
+        maxAge: 49.9,
+        percentiles: {
+            5: 5.0,
+            10: 6.0,
+            25: 8.0,
+            50: 12.0,
+            75: 16.0,
+            90: 21.0,
+            95: 25.0,
+        },
+    },
+    {
+        minAge: 50.0,
+        maxAge: 54.9,
+        percentiles: {
+            5: 5.0,
+            10: 6.0,
+            25: 8.0,
+            50: 11.5,
+            75: 15.0,
+            90: 20.8,
+            95: 25.0,
+        },
+    },
+    {
+        minAge: 55.0,
+        maxAge: 59.9,
+        percentiles: {
+            5: 5.0,
+            10: 6.0,
+            25: 8.0,
+            50: 11.5,
+            75: 15.0,
+            90: 25.0,
+            95: 25.0,
+        },
+    },
+    {
+        minAge: 60.0,
+        maxAge: 64.9,
+        percentiles: {
+            5: 5.0,
+            10: 6.0,
+            25: 8.0,
+            50: 11.5,
+            75: 15.5,
+            90: 20.5,
+            95: 24.0,
+        },
+    },
+    {
+        minAge: 65.0,
+        maxAge: 69.9,
+        percentiles: {
+            5: 4.5,
+            10: 5.0,
+            25: 8.0,
+            50: 11.0,
+            75: 15.0,
+            90: 20.0,
+            95: 23.5,
+        },
+    },
+    {
+        minAge: 70.0,
+        maxAge: 74.9,
+        percentiles: {
+            5: 4.5,
+            10: 6.0,
+            25: 8.0,
+            50: 11.0,
+            75: 15.0,
+            90: 19.0,
+            95: 23.0,
+        },
+    },
+];
+const femaleTricipitalSkinfoldPercentiles = [
+    {
+        minAge: 16.0,
+        maxAge: 16.9,
+        percentiles: {
+            5: 10.5,
+            10: 11.5,
+            25: 14.0,
+            50: 18.0,
+            75: 23.0,
+            90: 29.0,
+            95: 32.5,
+        },
+    },
+    {
+        minAge: 17.0,
+        maxAge: 17.9,
+        percentiles: {
+            5: 9.0,
+            10: 10.0,
+            25: 13.0,
+            50: 18.0,
+            75: 24.0,
+            90: 29.0,
+            95: 34.5,
+        },
+    },
+    {
+        minAge: 18.0,
+        maxAge: 24.9,
+        percentiles: {
+            5: 9.0,
+            10: 11.0,
+            25: 14.0,
+            50: 18.5,
+            75: 24.5,
+            90: 31.0,
+            95: 36.0,
+        },
+    },
+    {
+        minAge: 25.0,
+        maxAge: 29.9,
+        percentiles: {
+            5: 10.0,
+            10: 12.0,
+            25: 15.0,
+            50: 20.0,
+            75: 26.5,
+            90: 34.0,
+            95: 38.0,
+        },
+    },
+    {
+        minAge: 30.0,
+        maxAge: 34.9,
+        percentiles: {
+            5: 10.5,
+            10: 13.0,
+            25: 17.0,
+            50: 22.5,
+            75: 29.5,
+            90: 35.5,
+            95: 41.5,
+        },
+    },
+    {
+        minAge: 35.0,
+        maxAge: 39.9,
+        percentiles: {
+            5: 11.0,
+            10: 13.0,
+            25: 18.0,
+            50: 23.5,
+            75: 30.0,
+            90: 37.0,
+            95: 41.0,
+        },
+    },
+    {
+        minAge: 40.0,
+        maxAge: 44.9,
+        percentiles: {
+            5: 12.0,
+            10: 14.0,
+            25: 19.0,
+            50: 24.5,
+            75: 30.5,
+            90: 37.0,
+            95: 41.0,
+        },
+    },
+    {
+        minAge: 45.0,
+        maxAge: 49.9,
+        percentiles: {
+            5: 12.0,
+            10: 14.5,
+            25: 19.5,
+            50: 25.5,
+            75: 32.0,
+            90: 38.0,
+            95: 42.5,
+        },
+    },
+    {
+        minAge: 50.0,
+        maxAge: 54.9,
+        percentiles: {
+            5: 12.0,
+            10: 15.0,
+            25: 20.5,
+            50: 25.5,
+            75: 32.0,
+            90: 38.5,
+            95: 42.0,
+        },
+    },
+    {
+        minAge: 55.0,
+        maxAge: 59.9,
+        percentiles: {
+            5: 12.0,
+            10: 15.0,
+            25: 20.5,
+            50: 26.0,
+            75: 32.0,
+            90: 39.0,
+            95: 42.5,
+        },
+    },
+    {
+        minAge: 60.0,
+        maxAge: 64.9,
+        percentiles: {
+            5: 12.5,
+            10: 16.0,
+            25: 20.5,
+            50: 26.0,
+            75: 32.0,
+            90: 38.0,
+            95: 42.5,
+        },
+    },
+    {
+        minAge: 65.0,
+        maxAge: 69.9,
+        percentiles: {
+            5: 12.0,
+            10: 14.5,
+            25: 19.0,
+            50: 25.0,
+            75: 30.0,
+            90: 36.0,
+            95: 40.0,
+        },
+    },
+    {
+        minAge: 70.0,
+        maxAge: 74.9,
+        percentiles: {
+            5: 11.0,
+            10: 13.5,
+            25: 18.0,
+            50: 24.0,
+            75: 29.5,
+            90: 35.0,
+            95: 38.5,
+        },
+    },
+];
+function getPercentil50(age, isWoman, femalePercentiles, malePercentiles) {
+    const percentilesData = isWoman ? femalePercentiles : malePercentiles;
     const ageGroup = percentilesData.find((group) => age >= group.minAge && age <= group.maxAge);
     if (ageGroup && ageGroup.percentiles[50] !== undefined) {
         return ageGroup.percentiles[50];
     }
     return null;
 }
-// const errorCode = armCircumference(
-//     'cb-obtained',
-//     'cb-age',
-//     'cb-gender',
-//     'cb-result',
-//     'cb-interpretation'
-// );
 export function armCircumference(obtainedId, ageId, genderId, resultId, interpretationId) {
     try {
         const obtained = parseFloat(document.getElementById(obtainedId).value);
         const gender = document.getElementById(genderId).value;
         const isWoman = gender === 'feminino';
-        console.log('oi');
         const age = parseInt(document.getElementById(ageId).value, 10);
         // Validação dos dados de entrada
         if (isNaN(obtained) || isNaN(age)) {
@@ -1717,7 +2050,12 @@ export function armCircumference(obtainedId, ageId, genderId, resultId, interpre
             return 1;
         }
         // Obter o percentil 50 da CB com base no gênero e na idade
-        const percentil50 = getPercentil50(age, isWoman);
+        const percentil50 = getPercentil50(
+            age,
+            isWoman,
+            femaleArmCircumferencePercentiles,
+            maleArmCircumferencePercentiles
+        );
         if (percentil50 === null) {
             return 1;
         }
@@ -1806,6 +2144,64 @@ export function armCircumference(obtainedId, ageId, genderId, resultId, interpre
             interpretationId
         ).innerHTML = `<b>Tecido adiposo:</b> ${adiposeInterpretation}. <br> <b>Tecido muscular:</b> ${muscularInterpretation}.`;
         if (!isNaN(CB_Adequacy)) {
+            return -1;
+        }
+    } catch (error) {
+        return 1;
+    }
+}
+export function tricepsSkinfold(obtainedId, ageId, genderId, resultId) {
+
+    try {
+        const obtained = parseFloat(document.getElementById(obtainedId).value);
+        
+        const gender = document.getElementById(genderId).value;
+        const isWoman = gender === 'feminino';
+        
+        const age = parseInt(document.getElementById(ageId).value, 10);
+        // Validação dos dados de entrada
+        if (isNaN(obtained) || isNaN(age)) {
+            return 1;
+        }
+        if (obtained < 0 || age < 16 || age > 75) {
+            return 1;
+        }
+        // Encontrar o grupo de idade correspondente na tabela
+        const percentil50 = getPercentil50(
+            age,
+            isWoman,
+            femaleTricepsSkinfoldPercentiles,
+            maleTricepsSkinfoldPercentiles
+        );
+        console.log("ter");
+        if (percentil50 === null) {
+            return 1;
+        }
+        // Calcular a Adequação do DCT
+        const DCT_Adequacy = (obtained / percentil50) * 100;
+        console.table({ obtained, gender, age, percentil50, DCT_Adequacy });
+        // Classificar o Estado Nutricional
+        let nutritionalState = '';
+        if (DCT_Adequacy < 70) {
+            nutritionalState = 'Desnutrição grave';
+        } else if (DCT_Adequacy >= 70 && DCT_Adequacy < 80) {
+            nutritionalState = 'Desnutrição moderada';
+        } else if (DCT_Adequacy >= 80 && DCT_Adequacy < 90) {
+            nutritionalState = 'Desnutrição leve';
+        } else if (DCT_Adequacy >= 90 && DCT_Adequacy <= 100) {
+            nutritionalState = 'Eutrofia';
+        } else if (DCT_Adequacy > 100 && DCT_Adequacy <= 120) {
+            nutritionalState = 'Sobrepeso';
+        } else if (DCT_Adequacy > 120) {
+            nutritionalState = 'Obesidade';
+        } else {
+            nutritionalState = 'Estado Nutricional Indeterminado';
+        }
+        // Exibir os resultados
+        document.getElementById(resultId).innerHTML = `${DCT_Adequacy.toFixed(
+            2
+        )}% (${nutritionalState})`;
+        if (!isNaN(DCT_Adequacy)) {
             return -1;
         }
     } catch (error) {

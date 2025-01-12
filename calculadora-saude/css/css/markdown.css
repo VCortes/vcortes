@@ -58,4 +58,15 @@
         text-align: left;
         vertical-align: middle;
     }
+
+    [data-markdown="true"] a {
+        color: #007bff;
+        text-decoration: none;
+        border-bottom: 1px solid #007bff;
+    }
+
+    [data-markdown="true"] a:hover {
+        color: #0056b3;
+        border-bottom-color: #0056b3;
+    }
 }
